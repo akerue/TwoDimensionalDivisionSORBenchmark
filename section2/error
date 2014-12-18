@@ -1,0 +1,391 @@
+JGFAllSizeA.java:39: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFAllSizeA.java:40: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFAllSizeB.java:39: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFAllSizeB.java:40: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFAllSizeC.java:39: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFAllSizeC.java:40: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFCryptBenchSizeA.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFCryptBenchSizeA.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFCryptBenchSizeB.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFCryptBenchSizeB.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFCryptBenchSizeC.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFCryptBenchSizeC.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFLUFactBenchSizeA.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFLUFactBenchSizeA.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFLUFactBenchSizeB.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFLUFactBenchSizeB.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFLUFactBenchSizeC.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFLUFactBenchSizeC.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSORBenchSizeA.java:35: エラー: シンボルを見つけられません
+    rank = MPI.COMM_WORLD.Rank();
+                         ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSORBenchSizeA.java:36: エラー: シンボルを見つけられません
+    nprocess = MPI.COMM_WORLD.Size();
+                             ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSORBenchSizeB.java:35: エラー: シンボルを見つけられません
+    rank = MPI.COMM_WORLD.Rank();
+                         ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSORBenchSizeB.java:36: エラー: シンボルを見つけられません
+    nprocess = MPI.COMM_WORLD.Size();
+                             ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSORBenchSizeC.java:35: エラー: シンボルを見つけられません
+    rank = MPI.COMM_WORLD.Rank();
+                         ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSORBenchSizeC.java:36: エラー: シンボルを見つけられません
+    nprocess = MPI.COMM_WORLD.Size();
+                             ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSeriesBenchSizeA.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSeriesBenchSizeA.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSeriesBenchSizeB.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSeriesBenchSizeB.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSeriesBenchSizeC.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSeriesBenchSizeC.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSparseMatmultBenchSizeA.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSparseMatmultBenchSizeA.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSparseMatmultBenchSizeB.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSparseMatmultBenchSizeB.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSparseMatmultBenchSizeC.java:35: エラー: シンボルを見つけられません
+     rank = MPI.COMM_WORLD.Rank();
+                          ^
+  シンボル:   メソッド Rank()
+  場所: タイプIntracommの変数 COMM_WORLD
+JGFSparseMatmultBenchSizeC.java:36: エラー: シンボルを見つけられません
+     nprocess = MPI.COMM_WORLD.Size();
+                              ^
+  シンボル:   メソッド Size()
+  場所: タイプIntracommの変数 COMM_WORLD
+./series/SeriesTest.java:137: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Barrier();
+                  ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./series/SeriesTest.java:150: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Recv(p_TestArray[0],0,p_TestArray[0].length,MPI.DOUBLE,k,k);
+                      ^
+  シンボル:   メソッド Recv(double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./series/SeriesTest.java:151: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Recv(p_TestArray[1],0,p_TestArray[1].length,MPI.DOUBLE,k,
+                      ^
+  シンボル:   メソッド Recv(double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./series/SeriesTest.java:169: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Ssend(p_TestArray[0],0,p_TestArray[0].length,MPI.DOUBLE,0,JGFSeriesBench.rank);
+                    ^
+  シンボル:   メソッド Ssend(double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./series/SeriesTest.java:170: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Ssend(p_TestArray[1],0,p_TestArray[1].length,MPI.DOUBLE,0,
+                    ^
+  シンボル:   メソッド Ssend(double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./series/SeriesTest.java:174: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Barrier();
+                  ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./lufact/Linpack.java:223: エラー: シンボルを見つけられません
+       MPI.COMM_WORLD.Bcast(buf_col_k,0,buf_col_k.length,MPI.DOUBLE,list[k]);
+                     ^
+  シンボル:   メソッド Bcast(double[],int,int,Datatype,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./lufact/Linpack.java:225: エラー: シンボルを見つけられません
+       MPI.COMM_WORLD.Bcast(tmp_l,0,tmp_l.length,MPI.INT,list[k]);
+                     ^
+  シンボル:   メソッド Bcast(int[],int,int,Datatype,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./lufact/Linpack.java:265: エラー: シンボルを見つけられません
+         MPI.COMM_WORLD.Recv(a,i,1,MPI.OBJECT,list[i],10);
+                                      ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./lufact/Linpack.java:270: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Send(buf_a,i,1,MPI.OBJECT,0,10);
+                                         ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./lufact/JGFLUFactBench.java:97: エラー: シンボルを見つけられません
+         MPI.COMM_WORLD.Send(a,i,1,MPI.OBJECT,r_count,10);     
+                                      ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./lufact/JGFLUFactBench.java:111: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Recv(buf_a,i,1,MPI.OBJECT,0,10);
+                                         ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./lufact/JGFLUFactBench.java:121: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Bcast(list,0,list.length,MPI.INT,0);
+                  ^
+  シンボル:   メソッド Bcast(int[],int,int,Datatype,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./lufact/JGFLUFactBench.java:122: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Bcast(buf_list,0,list.length,MPI.INT,0);
+                  ^
+  シンボル:   メソッド Bcast(int[],int,int,Datatype,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./lufact/JGFLUFactBench.java:128: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Barrier();
+                  ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./lufact/JGFLUFactBench.java:140: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Barrier();
+                  ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:75: エラー: シンボルを見つけられません
+  MPI.COMM_WORLD.Barrier();
+                ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:92: エラー: シンボルを見つけられません
+     MPI.COMM_WORLD.Ssend(plain1,(p_array_rows*k),m_length,MPI.BYTE,k,k);
+                   ^
+  シンボル:   メソッド Ssend(byte[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:95: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Recv(p_plain1,0,p_array_rows,MPI.BYTE,0,JGFCryptBench.rank);
+                  ^
+  シンボル:   メソッド Recv(byte[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:101: エラー: シンボルを見つけられません
+  MPI.COMM_WORLD.Barrier();
+                ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:109: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Recv(plain2,(p_array_rows*k),p_array_rows,MPI.BYTE,k,k);
+                    ^
+  シンボル:   メソッド Recv(byte[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:112: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Ssend(p_plain2,0,p_array_rows,MPI.BYTE,0,JGFCryptBench.rank);
+                  ^
+  シンボル:   メソッド Ssend(byte[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./crypt/IDEATest.java:115: エラー: シンボルを見つけられません
+  MPI.COMM_WORLD.Barrier();
+                ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sor/SOR.java:51: エラー: シンボルを見つけられません
+                MPI.COMM_WORLD.Barrier();
+                              ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sor/SOR.java:108: エラー: シンボルを見つけられません
+                   MPI.COMM_WORLD.Sendrecv(p_G[p_G.length-2],0,p_G[p_G.length-2].length,MPI.DOUBLE,
+                                 ^
+  シンボル:   メソッド Sendrecv(double[],int,int,Datatype,int,int,double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sor/SOR.java:113: エラー: シンボルを見つけられません
+                   MPI.COMM_WORLD.Sendrecv(p_G[1],0,p_G[1].length,MPI.DOUBLE,JGFSORBench.rank-1,2,
+                                 ^
+  シンボル:   メソッド Sendrecv(double[],int,int,Datatype,int,int,double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sor/SOR.java:123: エラー: シンボルを見つけられません
+                MPI.COMM_WORLD.Barrier();
+                              ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sor/SOR.java:139: エラー: シンボルを見つけられません
+                    MPI.COMM_WORLD.Recv(G,k*JGFSORBench.p_row,rm_length,MPI.OBJECT,k,k);
+                                                                           ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./sor/SOR.java:148: エラー: シンボルを見つけられません
+                    MPI.COMM_WORLD.Ssend(p_G,1,JGFSORBench.p_row,MPI.OBJECT,0,JGFSORBench.rank);
+                                                                    ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./sor/SOR.java:153: エラー: シンボルを見つけられません
+                MPI.COMM_WORLD.Barrier();
+                              ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sor/JGFSORBench.java:112: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Send(G,(k*p_row)-1,m_length,MPI.OBJECT,k,k);
+                                                      ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./sor/JGFSORBench.java:117: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Recv(p_G,0,p_row+2,MPI.OBJECT,0,rank);
+                                           ^
+  シンボル:   変数 OBJECT
+  場所: クラス MPI
+./sor/JGFSORBench.java:127: エラー: シンボルを見つけられません
+   MPI.COMM_WORLD.Barrier();
+                 ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/SparseMatmult.java:40: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Barrier();
+                      ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/SparseMatmult.java:52: エラー: シンボルを見つけられません
+                MPI.COMM_WORLD.Allreduce(p_y,0,y,0,y.length,MPI.DOUBLE,MPI.SUM);
+                              ^
+  シンボル:   メソッド Allreduce(double[],int,double[],int,int,Datatype,Op)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/SparseMatmult.java:55: エラー: シンボルを見つけられません
+        MPI.COMM_WORLD.Barrier();
+                      ^
+  シンボル:   メソッド Barrier()
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/JGFSparseMatmultBench.java:124: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Ssend(buf_row,(k*ref_p_datasizes_nz),p_datasizes_nz,MPI.INT,k,1);
+                    ^
+  シンボル:   メソッド Ssend(int[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/JGFSparseMatmultBench.java:125: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Ssend(buf_col,(k*ref_p_datasizes_nz),p_datasizes_nz,MPI.INT,k,2);
+                    ^
+  シンボル:   メソッド Ssend(int[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/JGFSparseMatmultBench.java:126: エラー: シンボルを見つけられません
+      MPI.COMM_WORLD.Ssend(buf_val,(k*ref_p_datasizes_nz),p_datasizes_nz,MPI.DOUBLE,k,3);
+                    ^
+  シンボル:   メソッド Ssend(double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/JGFSparseMatmultBench.java:131: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Recv(row,0,p_datasizes_nz,MPI.INT,0,1);
+                  ^
+  シンボル:   メソッド Recv(int[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/JGFSparseMatmultBench.java:132: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Recv(col,0,p_datasizes_nz,MPI.INT,0,2);
+                  ^
+  シンボル:   メソッド Recv(int[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+./sparsematmult/JGFSparseMatmultBench.java:133: エラー: シンボルを見つけられません
+    MPI.COMM_WORLD.Recv(val,0,p_datasizes_nz,MPI.DOUBLE,0,3);
+                  ^
+  シンボル:   メソッド Recv(double[],int,int,Datatype,int,int)
+  場所: タイプIntracommの変数 COMM_WORLD
+エラー78個
