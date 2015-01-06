@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SOR_build" default="compile" basedir=".">
+
+  <target name="compile">
+      <javac srcdir="./section2" classpath=".:section2:${HOME}/Library/openmpi/lib/mpi.jar"/>
+      <javac srcdir="./section2/sor" classpath=".:section2:${HOME}/Library/openmpi/lib/mpi.jar"/>
+  </target>
+
+  <target name="cleanup">
+      <delete file="./section2/*.class"/>
+      <delete file="./section2/sor/*.class"/>
+  </target>
+
+</project>
+
