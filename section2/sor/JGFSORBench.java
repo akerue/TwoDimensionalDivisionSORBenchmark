@@ -20,7 +20,11 @@
 
 
 package sor;
-import jgfutil.*; 
+import com.sun.org.apache.xalan.internal.xsltc.dom.ArrayNodeListIterator;
+import jgfutil.*;
+
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 import mpi.*;
 
@@ -28,23 +32,36 @@ public class JGFSORBench extends SOR implements JGFSection2{
 
   public static int nprocess;
   public static int rank;
+  public static int P = 1, Q = 1;
   private int size; 
   private int datasizes[]={1000,1500,2000};
   private static final int JACOBI_NUM_ITER = 100;
   private static final long RANDOM_SEED = 10101010;
 
   public static int p_row;
+  public static int q_row;
   public static int ref_p_row;
+  public static int ref_q_row;
   public static int rem_p_row;
+  public static int rem_q_row;
 
   double [][] p_G = null;
-  int m_size,n_size,m_length;
+  int m_size,n_size,m_length, n_length;
 
   Random R = new Random(RANDOM_SEED);
 
   public JGFSORBench(int nprocess, int rank) {
         this.nprocess=nprocess;
         this.rank=rank;
+        int[] factors = factorization(nprocess);
+        if (factors.length != 1) {
+            for (int i = 0; i < factors.length / 2; i++) {
+                this.P *= factors[i];
+            }
+            for (int i = factors.length / 2; i < factors.length; i++) {
+                this.Q *= factors[i];
+            }
+        }
   }
 
   public void JGFsetsize(int size){
@@ -58,6 +75,7 @@ public class JGFSORBench extends SOR implements JGFSection2{
   public void JGFkernel() throws MPIException{
 
   int iup = 0;
+  int jup = 0;
 
 /* create the array G on process 0 */
 
@@ -73,63 +91,92 @@ public class JGFSORBench extends SOR implements JGFSection2{
 
 /* create the sub arrays of G */
 
-  p_row = (((datasizes[size] / 2) + nprocess -1) / nprocess)*2;
+  p_row = (((datasizes[size] / 2) + P -1) / P)*2;
+  q_row = (((datasizes[size] / 2) + Q -1) / Q)*2;
   ref_p_row = p_row;
-  rem_p_row = p_row - ((p_row*nprocess) - datasizes[size]);
-  if(rank==(nprocess-1)){
-    if((p_row*(rank+1)) > datasizes[size]) {
+  rem_p_row = p_row - ((p_row*P) - datasizes[size]);
+  ref_q_row = q_row;
+  rem_q_row = q_row - ((q_row*Q) - datasizes[size]);
+  if(rank%P == (P-1)){
+    if((p_row*P) > datasizes[size]) {
        p_row = rem_p_row;
     }
   }
+  if(rank/P == (Q-1)){
+      if((q_row*Q) > datasizes[size]) {
+          q_row = rem_q_row;
+      }
+  }
 
-  p_G = new double [p_row+2][datasizes[size]]; 
+  p_G = new double [p_row+2][q_row+2];
 
 /* copy or send the values of G to the sub arrays p_G */
    if(rank==0) {
 
-      if(nprocess==1) {
+      if(P==1) {
         iup = p_row+1;
       } else {
         iup = p_row+2;
       }
+      if(Q==1) {
+        jup = q_row+1;
+      } else {
+        jup = q_row+2;
+      }
 
+      // rank 0 のコピー
       for(int i=1;i<iup;i++){
-        for(int j=0;j<p_G[0].length;j++){
-          p_G[i][j] = G[i-1][j]; 
+        for(int j=1;j<jup;j++){
+          p_G[i][j] = G[i-1][j-1];
         }
       }
 
-      for(int j=0;j<G[0].length;j++){
+      // 端っこのパディング
+      for(int i=0;i<iup;i++){
+        p_G[i][0] = 0.0;
+      }
+      for(int j=0;j<jup;j++){
         p_G[0][j] = 0.0; 
       }
 
       for(int k=1;k<nprocess;k++){
-        if(k==nprocess-1) {
+        if(k%P == P-1) {
           m_length = rem_p_row + 1;
         } else {
           m_length = p_row + 2; 
         }
-        MPI.COMM_WORLD.Send(G,(k*p_row)-1,m_length,MPI.OBJECT,k,k);
+        if(k/Q == Q-1) {
+            n_length = rem_q_row + 1;
+        } else {
+            n_length = q_row + 2;
+        }
+        for (int i = 0; i < n_length; i++) {
+            MPI.COMM_WORLD.Send(G[i+rank/P*q_row],(k*p_row)-1,m_length,MPI.DOUBLE,k,k);
+        }
       }
 
    } else {
-
-      MPI.COMM_WORLD.Recv(p_G,0,p_row+2,MPI.OBJECT,0,rank);
+       for (int i = 0; i < n_length; i++) {
+           MPI.COMM_WORLD.Recv(p_G[i], 0, p_row + 2, MPI.DOUBLE, 0, rank);
+       }
    }
 
-   if(rank==(nprocess-1)){
-      for(int j=0;j<datasizes[size];j++){
-        p_G[p_G.length-1][j] = 0.0; 
+
+   if (rank%P == P-1) {
+       for (int i = 0; i < q_row; i++) {
+           p_G[p_G.length - 1][i] = 0.0;
+       }
+   }
+   if (rank/Q == Q-1) {
+      for (int j = 0; j < p_row; j++) {
+         p_G[j][p_G[0].length - 1] = 0.0;
       }
-
    }
- 
+
    MPI.COMM_WORLD.Barrier();
 
     System.gc();
     SORrun(1.25, p_G, JACOBI_NUM_ITER,G);
-
-
   }
 
   public void JGFvalidate(){
@@ -182,5 +229,27 @@ public class JGFSORBench extends SOR implements JGFSection2{
                 return A;
         }
 
+  private int[] factorization(int num)
+  {
+      List<Integer> factors = new ArrayList<Integer>();
+      while (num % 2 == 0) {
+          factors.add(2);
+          num /= 2;
+      }
 
+      for (int i=3; i * i <= num; i += 2) {
+          while(num % i == 0) {
+              factors.add(i);
+              num /= i;
+          }
+          if (num > 1) {
+              factors.add(num);
+          }
+      }
+      int[] ret = new int[factors.size()];
+      for (int i = 0; i < factors.size(); i++) {
+          ret[i] = factors.get(i).intValue();
+      }
+      return ret;
+  }
 }
