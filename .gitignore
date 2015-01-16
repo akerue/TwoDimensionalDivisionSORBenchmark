@@ -37,3 +37,6 @@ section3/*
 
 .idea/*
 *.log
+section2/*.class
+section2/sor/*.class
+jgfutil/*.class
