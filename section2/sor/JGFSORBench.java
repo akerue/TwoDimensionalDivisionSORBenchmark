@@ -26,6 +26,7 @@ import jgfutil.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Logger;
 import mpi.*;
 
 public class JGFSORBench extends SOR implements JGFSection2{ 
@@ -76,6 +77,7 @@ public class JGFSORBench extends SOR implements JGFSection2{
 
   int iup = 0;
   int jup = 0;
+  final Logger logger = Logger.getLogger("SORBench");
 
 /* create the array G on process 0 */
 
@@ -97,12 +99,12 @@ public class JGFSORBench extends SOR implements JGFSection2{
   rem_p_row = p_row - ((p_row*P) - datasizes[size]);
   ref_q_row = q_row;
   rem_q_row = q_row - ((q_row*Q) - datasizes[size]);
-  if(rank%P == (P-1)){
+  if(rank/Q == (P-1)){
     if((p_row*P) > datasizes[size]) {
        p_row = rem_p_row;
     }
   }
-  if(rank/P == (Q-1)){
+  if(rank%Q == (Q-1)){
       if((q_row*Q) > datasizes[size]) {
           q_row = rem_q_row;
       }
@@ -140,24 +142,39 @@ public class JGFSORBench extends SOR implements JGFSection2{
       }
 
       for(int k=1;k<nprocess;k++){
-        if(k%P == P-1) {
-          m_length = rem_p_row + 1;
+        if(k/Q == P-1) {
+            m_length = rem_p_row + 1;
+        } else if(k/Q == 0) {
+            m_length = p_row + 1;
         } else {
-          m_length = p_row + 2; 
+            m_length = p_row + 2;
         }
-        if(k/Q == Q-1) {
+        if(k%Q == Q-1) {
             n_length = rem_q_row + 1;
+        } else if (k%Q == 0) {
+            n_length = q_row + 1;
         } else {
             n_length = q_row + 2;
         }
-        for (int i = 0; i < n_length; i++) {
-            MPI.COMM_WORLD.Send(G[i+rank/P*q_row],(k*p_row)-1,m_length,MPI.DOUBLE,k,k);
+
+        int m_start, n_start;
+        for (int i = 0; i < m_length; i++) {
+            m_start = k / Q * p_row - 1;
+            if (m_start < 0) {
+                m_start = 0;
+            }
+            n_start = k % Q * q_row - 1;
+            if (n_start < 0) {
+                n_start = 0;
+            }
+
+            MPI.COMM_WORLD.Send(G[m_start], n_start, n_length, MPI.DOUBLE, k, k);
         }
       }
 
    } else {
-       for (int i = 0; i < n_length; i++) {
-           MPI.COMM_WORLD.Recv(p_G[i], 0, p_row + 2, MPI.DOUBLE, 0, rank);
+       for (int i = 1; i < p_row + 2; i++) {
+           MPI.COMM_WORLD.Recv(p_G[i], 0, q_row + 2, MPI.DOUBLE, 0, rank);
        }
    }
 
@@ -242,9 +259,9 @@ public class JGFSORBench extends SOR implements JGFSection2{
               factors.add(i);
               num /= i;
           }
-          if (num > 1) {
-              factors.add(num);
-          }
+      }
+      if (num > 1) {
+          factors.add(num);
       }
       int[] ret = new int[factors.size()];
       for (int i = 0; i < factors.size(); i++) {

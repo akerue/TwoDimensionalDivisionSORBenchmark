@@ -22,6 +22,7 @@
 package sor; 
 import jgfutil.*; 
 import mpi.*;
+import java.util.logging.Logger;
 
 public class SOR
 {
@@ -31,6 +32,7 @@ public class SOR
 	public static final void SORrun(double omega, double p_G[][], int num_iterations, double G[][]) throws MPIException
 	{
 
+        final Logger logger = Logger.getLogger("SORLog");
 		int M = p_G.length;
 		int N = p_G[0].length;
                
@@ -104,30 +106,30 @@ public class SOR
 
 /* Do the halo swaps */
 
-                 // 横方向のスワップ
-                 if(JGFSORBench.rank%JGFSORBench.P!=JGFSORBench.P-1){
+                 // 縦方向のスワップ
+                 if(JGFSORBench.rank/JGFSORBench.Q!=JGFSORBench.P-1){
                    MPI.COMM_WORLD.Sendrecv(p_G[p_G.length-2],0,p_G[p_G.length-2].length,MPI.DOUBLE,
-                   JGFSORBench.rank+1,1,
-                   p_G[p_G.length-1],0, p_G[p_G.length-1].length,MPI.DOUBLE,JGFSORBench.rank+1,2);
+                   JGFSORBench.rank+JGFSORBench.Q,1,
+                   p_G[p_G.length-1],0, p_G[p_G.length-1].length,MPI.DOUBLE,JGFSORBench.rank+JGFSORBench.Q,2);
                  }
-                 if(JGFSORBench.rank%JGFSORBench.P!=0){
-                   MPI.COMM_WORLD.Sendrecv(p_G[1],0,p_G[1].length,MPI.DOUBLE,JGFSORBench.rank-1,2,
-                   p_G[0],0,p_G[0].length,MPI.DOUBLE,JGFSORBench.rank-1,1);
+                 if(JGFSORBench.rank/JGFSORBench.Q!=0){
+                   MPI.COMM_WORLD.Sendrecv(p_G[1],0,p_G[1].length,MPI.DOUBLE,JGFSORBench.rank-JGFSORBench.Q,2,
+                   p_G[0],0,p_G[0].length,MPI.DOUBLE,JGFSORBench.rank-JGFSORBench.Q,1);
                  }
 
                  // 縦方向のスワップ
-                 if(JGFSORBench.rank/JGFSORBench.P!=JGFSORBench.Q-1){
+                 if(JGFSORBench.rank%JGFSORBench.Q!=JGFSORBench.Q-1){
                    for(int i = 0; i < p_G.length; i++){
                        MPI.COMM_WORLD.Sendrecv(p_G[i],p_G[i].length-2,1,MPI.DOUBLE,
-                               JGFSORBench.rank+JGFSORBench.P,3+i,
-                               p_G[i],p_G[i].length-1,1,MPI.DOUBLE,JGFSORBench.rank+JGFSORBench.P,4+i);
+                               JGFSORBench.rank+1,3+i,
+                               p_G[i],p_G[i].length-1,1,MPI.DOUBLE,JGFSORBench.rank+1,4+i);
                    }
                  }
-                 if(JGFSORBench.rank/JGFSORBench.P!=0){
+                 if(JGFSORBench.rank%JGFSORBench.Q!=0){
                    for(int j = 0; j < p_G.length; j++){
                        MPI.COMM_WORLD.Sendrecv(p_G[j],1,1,MPI.DOUBLE,
-                               JGFSORBench.rank-JGFSORBench.P,3+j,
-                               p_G[j],0,1,MPI.DOUBLE,JGFSORBench.rank-JGFSORBench.P,4+j);
+                               JGFSORBench.rank-1,4+j,
+                               p_G[j],0,1,MPI.DOUBLE,JGFSORBench.rank-1,3+j);
                    }
                  }
 		}
@@ -140,22 +142,29 @@ public class SOR
                 System.gc();
                 if(JGFSORBench.rank==0) {
 
+                  //logger.info("Copy own region");
                   for(int i=1;i<p_G.length-1;i++){
-                    for(int j=0;j<G[0].length;j++){
+                    for(int j=0;j<p_G[0].length;j++){
                       G[i-1][j] = p_G[i][j];
                     }
                   }
 
+                  //logger.info("Fetch array data from slave ranks");
                   for(int k=1;k<JGFSORBench.nprocess;k++){
-                    if(k==(JGFSORBench.nprocess-1)){
+                    if(k/JGFSORBench.Q == JGFSORBench.P-1){
                      rm_length = JGFSORBench.rem_p_row;
-                     rn_length = JGFSORBench.rem_q_row;
                     } else {
                      rm_length = JGFSORBench.p_row;
-                     rn_length = JGFSORBench.q_row;
                     }
-                    for(int l = 0; l < rn_length; l++) {
-                        MPI.COMM_WORLD.Recv(G[k/JGFSORBench.P*JGFSORBench.p_row + l], k * JGFSORBench.p_row, rm_length, MPI.DOUBLE, k, k);
+                    if(k%JGFSORBench.Q == JGFSORBench.Q-1) {
+                        rn_length = JGFSORBench.rem_q_row;
+                    } else {
+                        rn_length = JGFSORBench.q_row;
+                    }
+
+                    //logger.info("rm_length: " + rm_length);
+                    for(int l = 0; l < rm_length; l++) {
+                        MPI.COMM_WORLD.Recv(G[k/JGFSORBench.Q*JGFSORBench.p_row + l], k%JGFSORBench.Q * JGFSORBench.q_row, rn_length, MPI.DOUBLE, k, k);
                     }
                     System.gc();
                   }
@@ -163,10 +172,11 @@ public class SOR
 
                 } else {
 
+                 //logger.info("Send array data back to master rank");
                  for(int k=1;k<JGFSORBench.nprocess;k++){
                   if(JGFSORBench.rank==k) {
-                    for(int l = 0; l < JGFSORBench.q_row; l++) {
-                        MPI.COMM_WORLD.Ssend(p_G[l], 1, JGFSORBench.p_row, MPI.DOUBLE, 0, JGFSORBench.rank);
+                    for(int l = 0; l < JGFSORBench.p_row; l++) {
+                        MPI.COMM_WORLD.Ssend(p_G[l+1], 1, JGFSORBench.q_row, MPI.DOUBLE, 0, k);
                     }
                   }
                  }
