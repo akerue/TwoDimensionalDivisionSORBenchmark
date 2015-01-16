@@ -8,6 +8,7 @@
   </target>
 
   <target name="cleanup">
+      <delete file="./jgfutil/*.class"/>
       <delete file="./section2/*.class"/>
       <delete file="./section2/sor/*.class"/>
   </target>
