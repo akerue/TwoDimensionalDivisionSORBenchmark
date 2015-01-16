@@ -2,8 +2,9 @@
 <project name="SOR_build" default="compile" basedir=".">
 
   <target name="compile">
+      <javac srcdir="./jgfutil" classpath=".:section2:${HOME}/Library/openmpi/lib/mpi.jar"/>
       <javac srcdir="./section2/sor" classpath=".:section2:${HOME}/Library/openmpi/lib/mpi.jar"/>
-      <javac srcdir="./section2" debug="true" debuglevel="lines,vars,source" classpath=".:section2:${HOME}/Library/openmpi/lib/mpi.jar" includes="./section2/sor/*.java"/>
+      <javac srcdir="./section2" classpath=".:section2:${HOME}/Library/openmpi/lib/mpi.jar"/>
   </target>
 
   <target name="cleanup">
